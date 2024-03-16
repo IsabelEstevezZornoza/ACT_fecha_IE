@@ -5,8 +5,7 @@ class Fecha(private val dia: Int, private val mes: Int, private val anio: Int) {
 
     fun valida(): Boolean {
 
-        if (dia < 1 || dia > 31) return false
-        if (mes < 1 || mes > 12) return false
+        val esBisiesto = esBisiesto()
 
         // determinamos la cantidad de días del mes:
         var diasMes = diaDelMes()
@@ -17,6 +16,11 @@ class Fecha(private val dia: Int, private val mes: Int, private val anio: Int) {
         }
         return if (dia > diasMes) false else true
     } // … más métodos
+
+    private fun esBisiesto(anio:Int): Boolean {
+        if (dia < 1 || dia > 31) return false
+        if (mes < 1 || mes > 12) return false
+    }
 
     private fun diaDelMes(): Int {
         var diasMes = 0
